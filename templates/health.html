@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="/static/css/health.css">
+<head>
+	<title>Your Dashboard</title>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.js"></script>
+</head>
+<body>
+
+
+<div class="vertical-nav bg-white" id="sidebar">
+  <div class="py-4 px-3 mb-4 bg-light">
+    <div class="media d-flex align-items-center">
+      <div class="media-body">
+        <h4 class="m-0">{{name}}</h4><br>
+				<h6 class="m-0" style='text-align:center'> BMI: {{bmi}}</h6>
+      </div>
+    </div>
+  </div>
+  <p class="text-gray font-weight-bold text-uppercase px-3 small pb-4 mb-0">Your Health Report</p>
+  <ul class="nav flex-column bg-white mb-0">
+    <li class="nav-item">
+      <a href="/health" class="nav-link text-dark font-italic bg-light">
+        <i class="fa fa-th-large mr-3 text-primary fa-fw"></i>
+        	Home
+      </a>
+    </li>
+</div>
+
+<div class="notif-cell" style='text-align: right; margin: 0 auto ;width: 1000px; margin-top: 40px'>
+
+<div style='text-align:center; margin: 0 auto'>
+
+	<button type="button" style='margin-bottom: 20px'>
+	<img src='/static/images/heart_rate.png' style='height: 350px; width: 475px; margin-bottom: 20px'>
+  </button>
+
+</div>
+
+<button type="button" class="collapsible">
+				<p class="text-height-small">Current Status:</p>
+				<h4 class="text-height-md">
+
+					{% if current_status == 'normal' %}
+					<span class="icon-ok glyphicon glyphicon-ok"> Ok: </span>
+					 Your Health Status Is Currently Normal
+
+					 {% elif current_status == 'caution' %}
+					 <span class="icon-warning glyphicon glyphicon-exclamation-sign"> Caution: </span>
+					 There are some irregularities in your health. Please review.
+
+					 {% elif current_status == 'warning' %}
+					 <span class="icon-alert glyphicon glyphicon-exclamation-sign"> Warning: </span>
+ 					 Your Health Status is not stable. Please visit a doctor.
+					 {% endif %}
+
+				</h4>
+</button>
+
+			<div class="content" style='text-align:center; margin: 0 auto; height: 300px'>
+				<h4>Heart Rate: </h4>
+				<p> {{ heart_rate_status }} </p>
+				<h4>Pulse Rate: </h4>
+				<p> {{ pulse_rate_status }} </p>
+				<h4> Overall Recommendation:</h4>
+				<p> {{ overall_recommendation }} </p>
+				<h4>Emergency Contacts: </h4>
+				<table style='text-align:center; margin: 0 auto'>
+					<tr>
+						<td>
+							Emergency: 911
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Doctor: (816) 276-6405
+						</td>
+					</tr>
+						<td>
+							poison control: (800) 222-1222
+						</td>
+					</tr>
+				 </table>
+			</div>
+
+</div>
+
+<div class="notifications">
+	<div class="column-notif">
+		<h3 style='text-align:center'> Heart Alerts </h3>
+	</div>
+
+	<div class="column-notif-right">
+		<h3 style='tsext-align:center'> Calorie Alerts </h3>
+	</div>
+</div>
+
+
+
+<script src="/static/js/health.js"></script>
+</body>
+</html>
