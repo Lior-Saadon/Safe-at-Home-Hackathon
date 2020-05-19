@@ -29,18 +29,28 @@
     </li>
 </div>
 
-<div class="notif-cell" style='text-align: right; margin: 0 auto ;width: 1000px; margin-top: 40px'>
+<div class="notif-cell" style='text-align: right; margin: 0 auto ;width: 1200px; margin-top: 40px; margin-left: 200px'>
 
 <div style='text-align:center; margin: 0 auto'>
 
+	<button type="button" style='margin-bottom: 20px' class="collapsible">
+	<h2> Insights from your Heart Beat </h2>
+   </button>
+
+	<div class="content">
+	<button type="button" style='margin-bottom: 20px; margin-right: 40px'>
+		<img src='/static/images/heart_rate.png' style='height: 350px; width: 500px'>
+	</button>
+
 	<button type="button" style='margin-bottom: 20px'>
-	<img src='/static/images/heart_rate.png' style='height: 350px; width: 475px; margin-bottom: 20px'>
+		<img src='/static/images/real_time.png' style='height: 350px; width: 500px'>
   </button>
 
-</div>
+  </div>
+
+</div> <br/><br/>
 
 <button type="button" class="collapsible">
-				<p class="text-height-small">Current Status:</p>
 				<h4 class="text-height-md">
 
 					{% if current_status == 'normal' %}
@@ -48,9 +58,8 @@
 					 Your Health Status Is Currently Normal
 
 					 {% elif current_status == 'caution' %}
-					 <span class="icon-warning glyphicon glyphicon-exclamation-sign"> Caution: </span>
-					 There are some irregularities in your health. Please review.
-
+					 <span class="icon-warning glyphicon glyphicon-exclamation-sign" style='font-size: 30px; color: red' > Possible Emergency Detected </span>
+					 (Click for more information)
 					 {% elif current_status == 'warning' %}
 					 <span class="icon-alert glyphicon glyphicon-exclamation-sign"> Warning: </span>
  					 Your Health Status is not stable. Please visit a doctor.
@@ -59,13 +68,16 @@
 				</h4>
 </button>
 
-			<div class="content" style='text-align:center; margin: 0 auto; height: 300px'>
-				<h4>Heart Rate: </h4>
-				<p> {{ heart_rate_status }} </p>
-				<h4>Pulse Rate: </h4>
-				<p> {{ pulse_rate_status }} </p>
+			<div class="content" style='text-align:center; margin: 0 auto; height: 450px'>
+				<h4>Heart Beat: </h4>
+				<p> Your incoming heart beat data suggests that you are having a low blood pressure, possibly due to anxiety. </p><br>
+
+				<h4> Life-threatening words detected: </h4>
+				<p> Your phone detected a situation of struggle and life-threatening sentences. </p> <br>
+
 				<h4> Overall Recommendation:</h4>
-				<p> {{ overall_recommendation }} </p>
+				<p> Please calm down and relax. Drink or eat something sweet. Remember that low blood pressure is worse than higher blood pressure. </p><br>
+
 				<h4>Emergency Contacts: </h4>
 				<table style='text-align:center; margin: 0 auto'>
 					<tr>
@@ -82,18 +94,68 @@
 							poison control: (800) 222-1222
 						</td>
 					</tr>
-				 </table>
+				</table><br>
+
+				 <button type="submit" name='submit_button' class="btn btn-primary padding-up"
+				 style ='background-color: red; width: 30%; height: 30px; font-size: 20px; padding: 5px'> I've been attacked </button>
 			</div>
 
 </div>
 
 <div class="notifications">
+
 	<div class="column-notif">
 		<h3 style='text-align:center'> Heart Alerts </h3>
+
+
+	<div class="notif-cell">
+	<button type="button" class="collapsible">
+
+				<p class="text-height-small"> 7:43 pm Jerusalem </p>
+				<p class="text-height-small"> 18 May 2020</p>
+				<h4 class="text-height-md">
+					<span class="icon-warning glyphicon glyphicon-exclamation-sign"> Caution: </span>
+					 Your real heart beat is lesser than expected.
+				</h4>
+			</button>
+
+			<div class="content" style='text-align:center; margin: 0 auto'>
+					<h4>The Issue: </h4>
+					<p> Your sugar intake or level of anxiety may be cause for concern</p>
+					<h4>What to do</h4>
+					<p> Please press the emergency button below if you have been attacked. </p>
+					<h4>Emergency </h4>
+					<button type="submit" name='submit_button' class="btn btn-primary padding-up" style ='background-color: red'> I've been attacked </button>
+			</div>
+	</div>
+
 	</div>
 
 	<div class="column-notif-right">
-		<h3 style='tsext-align:center'> Calorie Alerts </h3>
+		<h3 style='text-align:center'> Voice Alerts </h3>
+
+		<div class="notif-cell">
+		<button type="button" class="collapsible">
+
+					<p class="text-height-small"> 7:51 pm Jerusalem </p>
+					<p class="text-height-small"> 18 May 2020</p>
+					<h4 class="text-height-md">
+						<span class="icon-alert glyphicon glyphicon-exclamation-sign"> Warning: </span>
+						   Life-threatening words detected
+					</h4>
+				</button>
+
+				<div class="content" style='text-align:center; margin: 0 auto'>
+						<h4>The Issue: </h4>
+						<p> A few life-threatening sentences and words of struggle were detected/</p>
+						<h4> Sentences Detected</h4>
+						<p> 'Please dont kill me.' , 'I have not done anything.'</p>
+						<h4>Emergency </h4>
+						<button type="submit" name='submit_button' class="btn btn-primary padding-up" style ='background-color: red'> I've been attacked </button>
+				</div>
+		</div>
+
+
 	</div>
 </div>
 

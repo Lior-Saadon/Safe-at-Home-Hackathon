@@ -1,23 +1,19 @@
 # importing general extensions of flask here
 from flask import Flask, session, render_template, request, flash, url_for, redirect
-import matplotlib.pyplot as plt
 import flask
-import app_functions
+from flask_cors import CORS
 import pandas as pd
+import app_functions
 import os
-import numpy as np
-import seaborn as sns; sns.set()
-
-from sklearn.linear_model import LogisticRegression
 
 # The code for setting up a user session in flask and securing it with a secret_key is already installed below.
 # You can jump directly to building your functions, and collecting HTML inputs for processing.
 
 app = Flask(__name__)
 app.config.from_object(__name__)
-app.config['DEBUG'] = True
 app.config["SECRET_KEY"] = app_functions.random_id(50)
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
+CORS(app, resources={r'/*': {'origins': '*'}})
 
 @app.route("/", methods=["GET", "POST"])
 def login():
@@ -80,8 +76,7 @@ def health():
                             bmi = session['bmi'],
                             name = session['name'],
                             current_status = 'caution',
-                            heart_rate_status = 'Warning',
-                            pulse_rate_status = 'Warning')
+                            heart_rate_status = 'caution')
 
 @app.after_request
 def add_header(r):
