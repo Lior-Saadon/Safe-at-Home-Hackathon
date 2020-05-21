@@ -1,6 +1,8 @@
-flask
+flask~=1.1.2
 gunicorn
 flask_cors
-pandas
+pandas~=1.0.3
 seaborn
 sklearn
+
+Kivy~=1.11.1
